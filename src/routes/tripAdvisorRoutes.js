@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 require("dotenv").config();
-const { fetchTripAdvisorData } = require("../tripAdvisorHandler");
+const { fetchTripAdvisorData } = require("../handlers/tripAdvisorHandler");
 
-router.post("/getLocationData", async (req, res) => {
+router.post("/getTripAdvisorData", async (req, res) => {
   try {
     const { searchQuery, category, latLong, radius } = req.body;
     const data = await fetchTripAdvisorData(
