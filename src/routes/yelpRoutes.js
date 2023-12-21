@@ -1,15 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const yelp = require("yelp-fusion");
-const { fetchYelpData } = require("../handlers/yelpHandler");
+
+const fetchYelpData = require("../handlers/yelpHandler");
 
 require("dotenv").config();
 
 const baseURL = "https://api.yelp.com/v3";
-const client = yelp.client(process.env.YELP_API_KEY);
 
-router.post("/getYelpData", async (req, res) => {
+router.post("/", async (req, res) => {
   const { location, term, categories, price } = req.body;
 
   const searchRequest = {
@@ -20,7 +19,7 @@ router.post("/getYelpData", async (req, res) => {
   };
 
   try {
-    const data = await fetchYelpData(client, searchRequest);
+    const data = await fetchYelpData(searchRequest);
 
     res.json(data);
   } catch (error) {
