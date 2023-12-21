@@ -6,7 +6,10 @@ const app = express();
 app.use(express.json());
 
 const tripAdvisorRoutes = require("./src/routes/tripAdvisorRoutes");
-app.use("/api", tripAdvisorRoutes);
+const yelpRoutes = require("./src/routes/yelpRoutes");
+
+app.use("/api/tripadvisor", tripAdvisorRoutes);
+app.use("/api/yelp", yelpRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
