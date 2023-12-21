@@ -10,11 +10,13 @@ const baseURL = "https://api.yelp.com/v3";
 const client = yelp.client(process.env.YELP_API_KEY);
 
 router.post("/getYelpData", async (req, res) => {
-  const { term, location } = req.body;
+  const { location, term, categories, price } = req.body;
 
   const searchRequest = {
     term: term,
     location: location,
+    categories: categories,
+    price: price,
   };
 
   try {
