@@ -8,7 +8,7 @@ require("dotenv").config();
 
 const baseURL = "https://api.yelp.com/v3";
 
-router.post("/", async (req, res) => {
+router.post("/yelp", async (req, res) => {
   console.log("WELCOME TO THE YELP SERVICE!!!");
 
   const { location, term, categories, price } = req.body;
